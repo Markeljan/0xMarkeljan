@@ -1,17 +1,8 @@
 import Head from "next/head";
 import Layout, { siteTitle } from "../components/Layout";
 import utilStyles from "../styles/utils.module.css";
-import { getSortedPostsData } from "../lib/posts";
 import { IoIosRocket, IoLogoTwitter } from "react-icons/io";
 import { AiFillInstagram } from "react-icons/ai";
-
-export async function getStaticProps() {
-  const allPostsData = getSortedPostsData();
-
-  return {
-    props: { allPostsData },
-  };
-}
 
 export default function Home({ allPostsData }) {
   return (
