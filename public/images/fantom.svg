@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="128px" height="128px"
+  viewBox="0 0 128 128" version="1.1">
+  <defs>
+    <filter id="alpha" filterUnits="objectBoundingBox" x="0%" y="0%" width="100%" height="100%">
+      <feColorMatrix type="matrix" in="SourceGraphic" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0" />
+    </filter>
+    <image id="image7" width="128" height="128"
+      xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAABmJLR0QA/wD/AP+gvaeTAAABAElEQVR4nO3SuQ2AQBDAQJ7+O0Y6SiBcHZ6pwIGPAwAAAAAAAAAAAAAA2NU5HfBlPfeabvizazqAWQaIM0CcAeIMEGeAOAPEGSDOAHEGiDNAnAHiDBBngDgDxBkgzgBxBogzQJwB4gwQZ4A4A8QZIM4AcQaIM0CcAeIMEGeAOAPEGSDOAHEGiDNAnAHiDBBngDgDxBkgzgBxBogzQJwB4gwQZ4A4A8QZIM4AcQaIM0CcAeIMEGeAOAPEGSDOAHEGiDNAnAHiDBBngDgDxBkgzgBxBogzQJwB4gwQZ4A4A8QZIM4AcQaIM0CcAeIMEGeAOAMAAAAAAAAAAAAAAABs6gUDNgOdpCLI9AAAAABJRU5ErkJggg==" />
+    <mask id="mask0">
+      <g filter="url(#alpha)">
+        <use xlink:href="#image7" />
+      </g>
+    </mask>
+    <clipPath id="clip1">
+      <rect x="0" y="0" width="128" height="128" />
+    </clipPath>
+    <g id="surface6" clip-path="url(#clip1)">
+      <path style=" stroke:none;fill-rule:evenodd;fill:rgb(100%,100%,100%);fill-opacity:1;"
+        d="M 68.800781 51.601562 L 83.199219 43.199219 L 83.199219 60 Z M 83.199219 87.601562 L 64 98.800781 L 44.800781 87.601562 L 44.800781 68 L 64 79.199219 L 83.199219 68 Z M 44.800781 43.199219 L 59.199219 51.601562 L 44.800781 60 Z M 66.398438 55.601562 L 80.800781 64 L 66.398438 72.398438 Z M 61.601562 72.398438 L 47.199219 64 L 61.601562 55.601562 Z M 80.800781 39.199219 L 64 48.800781 L 47.199219 39.199219 L 64 29.199219 Z M 40 37.601562 L 40 90 L 64 103.601562 L 88 90 L 88 37.601562 L 64 24 Z M 40 37.601562 " />
+    </g>
+  </defs>
+  <g id="surface1">
+    <path style=" stroke:none;fill-rule:nonzero;fill:rgb(7.45098%,70.980392%,92.54902%);fill-opacity:1;"
+      d="M 128 64 C 128 99.347656 99.347656 128 64 128 C 28.652344 128 0 99.347656 0 64 C 0 28.652344 28.652344 0 64 0 C 99.347656 0 128 28.652344 128 64 Z M 128 64 " />
+    <use xlink:href="#surface6" mask="url(#mask0)" />
+  </g>
+</svg>
