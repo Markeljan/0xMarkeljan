@@ -34,6 +34,7 @@ export default function Layout({ children, home }) {
               priority
               src="/images/avatar.png"
               className={utilStyles.borderCircle}
+              onMouseOver={() => (document.body.style.cursor = "default")}
               height={144}
               width={144}
               alt=""

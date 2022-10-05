@@ -79,18 +79,11 @@
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-  .aaveText:hover {
-    cursor: url(/images/aave.svg) 64 64, default;
-  }
+
   .avaxText {
     color: #e84142
   }
-  .avaxText:hover {
-    cursor: url(/images/avax.svg) 64 64, default;
-  }
+
   .fantomText {
     color: #13b5ec
-  }
-  .fantomText:hover {
-    cursor: url(/images/fantom.svg) 64 64, default;
   }
