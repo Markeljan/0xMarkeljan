@@ -6,14 +6,6 @@ import { AiFillInstagram } from "react-icons/ai";
 import { useEffect } from "react";
 
 export default function Home({ allPostsData }) {
-  useEffect(() => {
-    document.body.addEventListener("click", (event) => {
-      if (event.target.id === "__next") {
-        changeCursor("default");
-      }
-    });
-  }, []);
-
   function changeCursor(cursorName) {
     if (cursorName === "default") {
       document.body.style.cursor = "default";
