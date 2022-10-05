@@ -1,3 +1,9 @@
 node_modules
 .next
 .next/cache
+.next/cache/webpack/client-development/0.pack
+.next/cache/webpack/client-development/index.pack
+.next/cache/webpack/client-development/index.pack.old
+.next/cache/webpack/server-development/index.pack
+.next/cache/webpack/server-development/index.pack.old
+.next/static/chunks/webpack.js
