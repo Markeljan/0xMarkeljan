@@ -16,10 +16,12 @@ body {
 a {
   color: #0070f3;
   text-decoration: none;
+  
 }
 
 a:hover {
   text-decoration: underline;
+  cursor: url(../public/images/avatar-lazers.svg) 32 32, default;
 }
 
 img {

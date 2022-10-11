@@ -4,15 +4,12 @@ import utilStyles from "../styles/utils.module.css";
 import { IoIosRocket, IoLogoTwitter } from "react-icons/io";
 import { AiFillInstagram } from "react-icons/ai";
 import { useEffect } from "react";
+import changeCursor from "../components/changeCursor";
 
-export default function Home({ allPostsData }) {
-  function changeCursor(cursorName) {
-    if (cursorName === "default") {
-      document.body.style.cursor = "default";
-    } else {
-      document.body.style.cursor = `url(/images/${cursorName}.svg) 64 64, default`;
-    }
-  }
+export default function Home({}) {
+  useEffect(() => {
+    document.body.style.cursor = `url(/images/avatar.svg) 32 32, default`;
+  }, []);
   return (
     <Layout home>
       <Head>

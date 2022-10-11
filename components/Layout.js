@@ -5,6 +5,7 @@ import utilStyles from "../styles/utils.module.css";
 import Link from "next/link";
 import { IoLogoGithub, IoLogoTwitter } from "react-icons/io";
 import { MdPictureAsPdf } from "react-icons/md";
+import changeCursor from "./changeCursor";
 
 const name = "0xMarkeljan";
 export const siteTitle = "Markeljan Portfolio Site";
@@ -34,7 +35,7 @@ export default function Layout({ children, home }) {
               priority
               src="/images/avatar.png"
               className={utilStyles.borderCircle}
-              onMouseOver={() => (document.body.style.cursor = "default")}
+              onMouseOver={() => changeCursor("avatar")}
               height={144}
               width={144}
               alt=""
