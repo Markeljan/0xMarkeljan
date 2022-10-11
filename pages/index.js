@@ -51,7 +51,7 @@ export default function Home({}) {
           </span>{" "}
           ecosystems. Realizing the power and opportunity in decentralized
           finance, I decided to become a web3 #BUIDLer. Currently I am at
-          SoverignLabs
+          SovereignLabs
           <a
             className={utilStyles.darkButton}
             href="https://sovereignlabs.com"
