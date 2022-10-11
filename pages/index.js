@@ -69,6 +69,7 @@ export default function Home({}) {
           </a>
           .
         </p>
+        <p>For more info please take a look at my Resume PDF above.</p>
       </section>
     </Layout>
   );
