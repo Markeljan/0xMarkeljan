@@ -75,16 +75,29 @@
     color: #666;
   }
 
+  
   .aaveText {
     background: -webkit-linear-gradient(45deg,rgb(48,185,196), rgb(181,82,158));
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+  .aaveText:hover{
+    /* change cursor */
+    cursor: url(../public/images/aave.svg) 32 32, default;
+  }
 
   .avaxText {
     color: #e84142
   }
+  .avaxText:hover{
+    /* change cursor */
+    cursor: url(../public/images/avax.svg) 32 32, default;
+  }
 
   .fantomText {
     color: #13b5ec
+  }
+  .fantomText:hover{
+    /* change cursor */
+    cursor: url(../public/images/fantom.svg) 32 32, default;
   }

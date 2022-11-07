@@ -7,18 +7,16 @@ import { IoLogoGithub, IoLogoTwitter } from "react-icons/io";
 import { MdPictureAsPdf } from "react-icons/md";
 import changeCursor from "./changeCursor";
 
-const name = "0xMarkeljan";
-export const siteTitle = "Markeljan Portfolio Site";
+export const siteTitle = "Markeljan | Web3 Developer";
 
 export default function Layout({ children, home }) {
+  const name = "0xMarkeljan";
+
   return (
     <div className={styles.container}>
       <Head>
         <link rel="icon" href="/favicon.ico" />
-        <meta
-          name="description"
-          content="Learn how to build a personal website using Next.js"
-        />
+        <meta name="description" content="Learn how to build a personal website using Next.js" />
         <meta
           property="og:image"
           content={`https://og-image.vercel.app/${encodeURI(
@@ -56,11 +54,7 @@ export default function Layout({ children, home }) {
               >
                 <IoLogoTwitter />
               </a>
-              <a
-                className={utilStyles.darkButton}
-                href="/0xMarkeljanResume.pdf"
-                target="_blank"
-              >
+              <a className={utilStyles.darkButton} href="/0xMarkeljanResume.pdf" target="_blank">
                 <MdPictureAsPdf />
               </a>
             </h1>
@@ -87,27 +81,15 @@ export default function Layout({ children, home }) {
           </>
         )}
         <p className={utilStyles.subHead}>
-          <a
-            className={utilStyles.darkButton}
-            href="https://deOracle.xyz"
-            target={"_blank"}
-          >
+          <a className={utilStyles.darkButton} href="https://deOracle.xyz" target={"_blank"}>
             deOracle
           </a>
           {" | "}
-          <a
-            className={utilStyles.darkButton}
-            href="https://wallet.sh"
-            target={"_blank"}
-          >
+          <a className={utilStyles.darkButton} href="https://wallet.sh" target={"_blank"}>
             Smart Wallet
           </a>
           {" | "}
-          <a
-            className={utilStyles.darkButton}
-            href="https://astarcreators.com"
-            target={"_blank"}
-          >
+          <a className={utilStyles.darkButton} href="https://astarcreators.com" target={"_blank"}>
             Astar Creators
           </a>{" "}
           {" | "}

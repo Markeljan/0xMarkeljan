@@ -18,8 +18,7 @@ export default function Home({}) {
       <section className={utilStyles.headingMd}>
         <p>Hey! I'm Mark, web3 developer and DeFi Maxi .</p>
         <p>
-          My journey into crypto initially began in 2017 when my brother and I
-          founded SokoMining
+          My journey into crypto initially began in 2017 when my brother and I founded SokoMining
           <a
             className={utilStyles.darkButton}
             href="https://instagram.com/sokomining"
@@ -27,44 +26,17 @@ export default function Home({}) {
           >
             <AiFillInstagram />
           </a>
-          . It has since been an exilerating ride. In 2020 I experienced DeFi
-          Summer firsthand using protocols like{" "}
-          <span
-            className={utilStyles.aaveText}
-            onMouseOver={() => changeCursor("aave")}
-          >
-            AAVE
-          </span>{" "}
-          as well as joining the{" "}
-          <span
-            className={utilStyles.avaxText}
-            onMouseOver={() => changeCursor("avax")}
-          >
-            Avalanche
-          </span>{" "}
-          and{" "}
-          <span
-            className={utilStyles.fantomText}
-            onMouseOver={() => changeCursor("fantom")}
-          >
-            Fantom
-          </span>{" "}
-          ecosystems. Realizing the power and opportunity in decentralized
-          finance, I decided to become a web3 #BUIDLer. Currently I am at
-          SovereignLabs
-          <a
-            className={utilStyles.darkButton}
-            href="https://sovereignlabs.com"
-            target="_blank"
-          >
+          . It has since been an exilerating ride. In 2020 I experienced DeFi Summer firsthand using
+          protocols like <span className={utilStyles.aaveText}>AAVE</span> as well as joining the{" "}
+          <span className={utilStyles.avaxText}>Avalanche</span> and{" "}
+          <span className={utilStyles.fantomText}>Fantom</span> ecosystems. Realizing the power and
+          opportunity in decentralized finance, I decided to become a web3 #BUIDLer. Currently I am
+          at SovereignLabs
+          <a className={utilStyles.darkButton} href="https://sovereignlabs.com" target="_blank">
             <IoIosRocket />
           </a>{" "}
           with Alex Biet
-          <a
-            className={utilStyles.darkButton}
-            href="https://twitter.com/alex_biet"
-            target="_blank"
-          >
+          <a className={utilStyles.darkButton} href="https://twitter.com/alex_biet" target="_blank">
             <IoLogoTwitter />
           </a>
           .
