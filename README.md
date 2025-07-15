@@ -1,16 +1,11 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Interactive portfolio for **Markeljan Sokoli (soko.eth)** built with [Next.js](https://nextjs.org/) and styled using Tailwind CSS.
 
 ## Getting Started
 
-First, run the development server:
+First, install dependencies with [bun](https://bun.sh/) and start the development server:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
+bun install
 bun dev
 ```
 
