@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { highlights, Highlight } from '@/data/highlights';
+import { highlights } from '@/data/highlights';
 
 const COLORS = [
   'bg-gray-200 dark:bg-gray-700',
@@ -10,8 +10,21 @@ const COLORS = [
   'bg-green-500 dark:bg-green-400',
 ];
 
+type Cell = {
+  level: number;
+  title?: string;
+  description?: string;
+  link?: string;
+};
+
 export default function HighlightGrid() {
-  const [active, setActive] = useState<Highlight | null>(null);
+  const [active, setActive] = useState<Cell | null>(null);
+
+  const TOTAL = 53 * 7;
+  const cells: Cell[] = Array.from({ length: TOTAL }, (_, i) => {
+    const h = highlights.find((hl) => hl.index === i);
+    return h ? h : { level: 0 };
+  });
 
   return (
     <div className="relative">
@@ -39,13 +52,13 @@ export default function HighlightGrid() {
           </div>
         </div>
       )}
-      <div className="grid grid-cols-7 gap-1">
-        {highlights.map((h, i) => (
+      <div className="grid grid-flow-col grid-rows-7 gap-1">
+        {cells.map((cell, i) => (
           <button
             key={i}
-            onClick={() => setActive(h)}
-            aria-label={h.title}
-            className={`h-4 w-4 sm:h-6 sm:w-6 rounded ${COLORS[h.level]}`}
+            onClick={() => cell.title && setActive(cell)}
+            aria-label={cell.title ? cell.title : `Cell ${i}`}
+            className={`h-3 w-3 sm:h-4 sm:w-4 rounded ${COLORS[cell.level]}`}
           />
         ))}
       </div>
