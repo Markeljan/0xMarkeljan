@@ -58,7 +58,7 @@ export default function ContributionHeatmap({
         })}
       </div>
       <p className="text-xs text-emerald-200/80">
-        Scroll the story and tap tiles to jump to a milestone.
+        Scroll or use arrow keys to move between milestones. Tap tiles to jump directly into one.
       </p>
     </div>
   );

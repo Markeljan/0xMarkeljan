@@ -173,7 +173,7 @@ export const highlights: Highlight[] = [
     intensity: 2,
     cta: {
       label: "Follow on X",
-      href: "https://x.com/0xsoko",
+      href: "https://x.com/soko_eth",
     },
     upcoming: "Embed rolling highlights from long-form threads and Spaces recordings.",
   },

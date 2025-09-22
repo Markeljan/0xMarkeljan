@@ -29,7 +29,7 @@ export default function Home() {
             <span aria-hidden>↗</span>
           </a>
           <a
-            href="https://x.com/0xsoko"
+            href="https://x.com/soko_eth"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-full border border-emerald-400/40 bg-transparent px-5 py-3 text-sm font-semibold text-emerald-100/80 transition hover:border-emerald-300 hover:text-emerald-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-200"
