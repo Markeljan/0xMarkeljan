@@ -1,13 +1,6 @@
 "use client";
 
-import {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
-import type { TouchEvent, WheelEvent } from "react";
+import { useCallback, useMemo, useState } from "react";
 import ContributionHeatmap from "./ContributionHeatmap";
 import { highlights as highlightData, type Highlight } from "@/data/highlights";
 
@@ -16,161 +9,75 @@ export default function JourneyExperience() {
     return [...highlightData].sort((a, b) => a.sequence - b.sequence);
   }, []);
 
-  const [activeIndex, setActiveIndex] = useState(0);
-  const scrollLockRef = useRef(false);
-  const releaseTimeoutRef = useRef<number | null>(null);
-  const touchStartRef = useRef<number | null>(null);
+  const [selectedId, setSelectedId] = useState<string | null>(() => {
+    return timeline.length ? timeline[0].id : null;
+  });
+  const [activeId, setActiveId] = useState<string | null>(() => {
+    return timeline.length ? timeline[0].id : null;
+  });
 
-  const activeHighlight = timeline[activeIndex];
+  const fallbackId = timeline[0]?.id ?? null;
+  const resolvedActiveId = activeId ?? selectedId ?? fallbackId;
 
-  const releaseScroll = useCallback(() => {
-    if (releaseTimeoutRef.current) {
-      window.clearTimeout(releaseTimeoutRef.current);
+  const activeHighlight = useMemo(() => {
+    if (!timeline.length) return undefined;
+    if (!resolvedActiveId) {
+      return timeline[0];
     }
-    releaseTimeoutRef.current = window.setTimeout(() => {
-      scrollLockRef.current = false;
-      releaseTimeoutRef.current = null;
-    }, 450);
+    return timeline.find((item) => item.id === resolvedActiveId) ?? timeline[0];
+  }, [timeline, resolvedActiveId]);
+
+  const activeIndex = useMemo(() => {
+    if (!activeHighlight) return -1;
+    return timeline.findIndex((item) => item.id === activeHighlight.id);
+  }, [timeline, activeHighlight]);
+
+  const totalHighlights = timeline.length;
+
+  const handleHover = useCallback((id: string) => {
+    setActiveId(id);
   }, []);
 
-  const stepThroughTimeline = useCallback(
-    (direction: "next" | "prev") => {
-      if (!timeline.length) return false;
+  const handleLeave = useCallback(() => {
+    setActiveId(selectedId ?? fallbackId);
+  }, [selectedId, fallbackId]);
 
-      let didChange = false;
-      setActiveIndex((prev) => {
-        const delta = direction === "next" ? 1 : -1;
-        const next = Math.min(Math.max(prev + delta, 0), timeline.length - 1);
-        if (next !== prev) {
-          didChange = true;
-        }
-        return next;
-      });
-
-      return didChange;
-    },
-    [timeline.length]
-  );
-
-  const focusHighlight = useCallback(
-    (id: string) => {
-      const index = timeline.findIndex((item) => item.id === id);
-      if (index !== -1) {
-        setActiveIndex(index);
-      }
-    },
-    [timeline]
-  );
-
-  const handleWheel = useCallback(
-    (event: WheelEvent<HTMLDivElement>) => {
-      if (scrollLockRef.current) return;
-
-      const magnitude = Math.abs(event.deltaY);
-      if (magnitude < 16) return;
-
-      const direction = event.deltaY > 0 ? "next" : "prev";
-      const changed = stepThroughTimeline(direction);
-
-      if (changed) {
-        scrollLockRef.current = true;
-        event.preventDefault();
-        releaseScroll();
-      }
-    },
-    [releaseScroll, stepThroughTimeline]
-  );
-
-  const handleTouchStart = useCallback((event: TouchEvent<HTMLDivElement>) => {
-    if (event.touches.length !== 1) return;
-    touchStartRef.current = event.touches[0].clientY;
+  const handleSelect = useCallback((id: string) => {
+    setSelectedId(id);
+    setActiveId(id);
   }, []);
-
-  const handleTouchMove = useCallback(
-    (event: TouchEvent<HTMLDivElement>) => {
-      if (scrollLockRef.current) return;
-      if (event.touches.length !== 1) return;
-      if (touchStartRef.current === null) return;
-
-      const currentY = event.touches[0].clientY;
-      const diff = touchStartRef.current - currentY;
-
-      if (Math.abs(diff) < 35) return;
-
-      const direction = diff > 0 ? "next" : "prev";
-      const changed = stepThroughTimeline(direction);
-
-      if (changed) {
-        scrollLockRef.current = true;
-        event.preventDefault();
-        touchStartRef.current = currentY;
-        releaseScroll();
-      }
-    },
-    [releaseScroll, stepThroughTimeline]
-  );
-
-  const handleTouchEnd = useCallback(() => {
-    touchStartRef.current = null;
-  }, []);
-
-  useEffect(() => {
-    return () => {
-      if (releaseTimeoutRef.current) {
-        window.clearTimeout(releaseTimeoutRef.current);
-      }
-    };
-  }, []);
-
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "ArrowDown" || event.key === "ArrowRight") {
-        const changed = stepThroughTimeline("next");
-        if (changed) {
-          event.preventDefault();
-        }
-      } else if (event.key === "ArrowUp" || event.key === "ArrowLeft") {
-        const changed = stepThroughTimeline("prev");
-        if (changed) {
-          event.preventDefault();
-        }
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [stepThroughTimeline]);
 
   return (
-    <section className="relative mt-16 rounded-3xl border border-emerald-500/20 bg-emerald-950/40 p-6 shadow-[0_25px_60px_-25px_rgba(16,185,129,0.45)] backdrop-blur lg:mt-24">
-      <div
-        className="flex flex-col gap-10 lg:grid lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] lg:gap-12"
-        onWheel={handleWheel}
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
-        role="presentation"
-      >
-        <div className="flex flex-col gap-8">
-          <header className="space-y-2">
-            <p className="text-xs uppercase tracking-[0.3em] text-emerald-200/70">Contribution navigator</p>
-            <h2 className="text-3xl font-semibold text-emerald-50 sm:text-4xl">Zoom into each highlight</h2>
-            <p className="text-sm text-emerald-100/80 sm:text-base">
-              Scroll, swipe, or use your arrow keys to move through the journey. Tap any tile to jump straight to its story.
-            </p>
-          </header>
-          <ContributionHeatmap
-            highlights={timeline}
-            activeId={activeHighlight?.id ?? null}
-            onHover={focusHighlight}
-            onSelect={focusHighlight}
+    <section className="relative mt-16 lg:mt-24">
+      <div className="relative rounded-3xl border border-emerald-500/15 bg-slate-950/70 p-6 shadow-[0_25px_60px_-25px_rgba(16,185,129,0.45)] backdrop-blur sm:p-10">
+        <div
+          aria-hidden
+          className="absolute inset-x-12 top-0 h-px bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent"
+        />
+        <header className="max-w-3xl space-y-3">
+          <p className="text-xs uppercase tracking-[0.3em] text-emerald-200/70">Contribution navigator</p>
+          <h2 className="text-3xl font-semibold text-emerald-50 sm:text-4xl">Zoom into each highlight</h2>
+          <p className="text-sm text-emerald-100/80 sm:text-base">
+            Hover or tap across the grid to preview each milestone. Click a tile to keep its story in view while you explore the
+            full context below.
+          </p>
+        </header>
+        <div className="mt-8 flex flex-col gap-6 lg:gap-8">
+          <div className="rounded-2xl border border-emerald-500/20 bg-emerald-950/40 p-4 sm:p-6">
+            <ContributionHeatmap
+              highlights={timeline}
+              activeId={activeHighlight?.id ?? null}
+              onHover={handleHover}
+              onSelect={handleSelect}
+              onLeave={handleLeave}
+            />
+          </div>
+          <HighlightDetail
+            highlight={activeHighlight}
+            index={activeIndex >= 0 ? activeIndex : 0}
+            total={totalHighlights}
           />
         </div>
-        <HighlightDetail
-          highlight={activeHighlight}
-          index={activeIndex}
-          total={timeline.length}
-        />
       </div>
     </section>
   );
@@ -188,7 +95,7 @@ function HighlightDetail({ highlight, index, total }: HighlightDetailProps) {
   const order = index + 1;
 
   return (
-    <aside className="flex h-full flex-col gap-6 rounded-2xl border border-emerald-500/25 bg-slate-950/60 p-6 text-sm text-emerald-100/80 shadow-[0_35px_60px_-30px_rgba(16,185,129,0.45)]">
+    <article className="flex flex-col gap-6 rounded-2xl border border-emerald-500/20 bg-slate-950/80 p-6 text-sm text-emerald-100/80 shadow-[0_35px_60px_-30px_rgba(16,185,129,0.45)] sm:p-8">
       <div>
         <p className="text-xs uppercase tracking-[0.35em] text-emerald-200/70">
           {order.toString().padStart(2, "0")} / {total.toString().padStart(2, "0")} · {highlight.period}
@@ -197,7 +104,7 @@ function HighlightDetail({ highlight, index, total }: HighlightDetailProps) {
         <p className="mt-3 text-base text-emerald-100/85 sm:text-lg">{highlight.summary}</p>
         <p className="mt-4 leading-relaxed text-emerald-100/75">{highlight.description}</p>
       </div>
-      <div className="mt-auto space-y-4">
+      <div className="space-y-4">
         <div className="flex flex-wrap gap-2">
           {highlight.tags.map((tag) => (
             <span
@@ -226,6 +133,6 @@ function HighlightDetail({ highlight, index, total }: HighlightDetailProps) {
           </a>
         )}
       </div>
-    </aside>
+    </article>
   );
 }

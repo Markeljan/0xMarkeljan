@@ -12,11 +12,12 @@ export default function Home() {
           Markeljan Sokoli · soko.eth
         </span>
         <h1 className="text-4xl font-bold leading-tight sm:text-6xl">
-          A contribution-style journey you can scroll, tap, and zoom through.
+          A contribution-style journey you can hover, tap, and dive into.
         </h1>
         <p className="max-w-2xl text-base text-emerald-100/80 sm:text-lg">
-          This portfolio reimagines my path as an interactive contributions grid. Scroll to follow each milestone, open tiles to
-          jump around the timeline, and watch this space grow as I embed live demos, videos, and notes from every project.
+          This portfolio reimagines my path as an interactive contributions grid. Hover across the timeline to preview each
+          milestone, click tiles to keep their stories in focus, and watch this space grow as I embed live demos, videos, and
+          notes from every project.
         </p>
         <div className="flex flex-wrap items-center justify-center gap-4">
           <a
@@ -38,9 +39,7 @@ export default function Home() {
             <span aria-hidden>↗</span>
           </a>
         </div>
-        <p className="text-xs uppercase tracking-[0.4em] text-emerald-200/60">
-          Scroll to explore ↓
-        </p>
+        <p className="text-xs uppercase tracking-[0.4em] text-emerald-200/60">Start exploring below ↓</p>
       </section>
       <div className="mx-auto w-full max-w-6xl px-4 pb-24 sm:px-6 lg:px-8">
         <JourneyExperience />
