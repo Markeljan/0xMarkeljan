@@ -2,11 +2,12 @@ Interactive portfolio for **Markeljan Sokoli (soko.eth)** built with [Next.js](h
 
 ## Getting Started
 
-First, install dependencies with [bun](https://bun.sh/) and start the development server:
+Install Node.js **22.x** (we recommend [nvm](https://github.com/nvm-sh/nvm) for managing versions), then install dependencies and start the development server:
 
 ```bash
-bun install
-bun dev
+nvm use 22 # optional, if you use nvm
+npm install
+npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
