@@ -1,17 +1,13 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Interactive portfolio for **Markeljan Sokoli (soko.eth)** built with [Next.js](https://nextjs.org/) and styled using Tailwind CSS.
 
 ## Getting Started
 
-First, run the development server:
+Install Node.js **22.x** (we recommend [nvm](https://github.com/nvm-sh/nvm) for managing versions), then install dependencies and start the development server:
 
 ```bash
+nvm use 22 # optional, if you use nvm
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
